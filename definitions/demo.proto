@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package definitions.demo;
+
+service DemoService {
+  rpc IsTrue (IsTrueRequest) returns (IsTrueResponse);
+}
+
+message DemoRequest {
+  int32 value = 1;
+}
+
+message DemoResponse {
+  bool is_true = 1;
+}
