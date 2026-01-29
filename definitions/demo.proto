@@ -3,7 +3,7 @@ syntax = "proto3";
 package definitions.demo;
 
 service DemoService {
-  rpc IsTrue (IsTrueRequest) returns (IsTrueResponse);
+  rpc IsTrue (DemoRequest) returns (DemoResponse);
 }
 
 message DemoRequest {
