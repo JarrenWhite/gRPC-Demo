@@ -1,7 +1,7 @@
 from concurrent import futures
 import grpc
 
-import protobufs.demo_pb2_grpc
+import definitions.demo_pb2_grpc as demo_pb2_grpc
 from service import DemoService
 
 
