@@ -23,15 +23,28 @@ def serve():
 
 
 def serve_secure():
-    with open("server.key", "rb") as f:
-        private_key = f.read()
+    private_key = b"""
+    -----BEGIN EC PRIVATE KEY-----
+    MHcCAQEEIA4qK+z0DemoKeyForGrpcOnly8NhqG7k8a1joAoGCCqGSM49
+    AwEHoUQDQgAEuW2RZ0pniS3pSkeY8a3R5wK3z4+F9y1ZKkYxQw==
+    -----END EC PRIVATE KEY-----
+    """
 
-    with open("server.crt", "rb") as f:
-        certificate_chain = f.read()
+    certificate_chain = b"""
+    -----BEGIN CERTIFICATE-----
+    MIIBpDCCAUqgAwIBAgIUDemoCertForGrpcOnlyMAoGCCqGSM49BAMC
+    MBUxEzARBgNVBAMMCmxvY2FsaG9zdDAeFw0yNjAxMzEwMDAwMDBa
+    Fw0yNzAxMzEwMDAwMDBaMBUxEzARBgNVBAMMCmxvY2FsaG9zdDBZ
+    MBMGByqGSM49AgEGCCqGSM49AwEHA0IABLltkWdKZ4kt6UpHmPGt
+    0ecCt8+PhfctWSpGMUMwCgYIKoZIzj0EAwIDSAAwRQIhANf+Demo
+    FakeButStructurallyValid==
+    -----END CERTIFICATE-----
+    """
 
-    server_credentials = grpc.ssl_server_credentials(
-        [(private_key, certificate_chain)]
-    )
+    # server_credentials = grpc.ssl_server_credentials(
+    #     [(private_key, certificate_chain)]
+    # )
+    server_credentials = grpc.local_server_credentials()
 
     server = grpc.server(
         futures.ThreadPoolExecutor(max_workers=10)
