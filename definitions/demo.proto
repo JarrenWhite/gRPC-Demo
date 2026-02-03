@@ -13,3 +13,18 @@ message DemoRequest {
 message DemoResponse {
   bool is_true = 1;
 }
+
+service MyService {
+  rpc MyServiceApi (MyServiceRequest) returns (MyServiceResponse);
+}
+
+message MyServiceRequest {
+  int32 value_one = 1;
+  int32 value_two = 2;
+}
+
+message MyServiceResponse {
+  int32 sum = 1;
+  int32 product = 2;
+  int32 difference = 3;
+}
