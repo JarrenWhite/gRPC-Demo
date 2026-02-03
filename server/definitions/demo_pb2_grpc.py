@@ -95,3 +95,75 @@ class DemoService(object):
             timeout,
             metadata,
             _registered_method=True)
+
+
+class MyServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def __init__(self, channel):
+        """Constructor.
+
+        Args:
+            channel: A grpc.Channel.
+        """
+        self.MyServiceApi = channel.unary_unary(
+                '/definitions.demo.MyService/MyServiceApi',
+                request_serializer=definitions_dot_demo__pb2.MyServiceRequest.SerializeToString,
+                response_deserializer=definitions_dot_demo__pb2.MyServiceResponse.FromString,
+                _registered_method=True)
+
+
+class MyServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
+
+    def MyServiceApi(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+
+def add_MyServiceServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+            'MyServiceApi': grpc.unary_unary_rpc_method_handler(
+                    servicer.MyServiceApi,
+                    request_deserializer=definitions_dot_demo__pb2.MyServiceRequest.FromString,
+                    response_serializer=definitions_dot_demo__pb2.MyServiceResponse.SerializeToString,
+            ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+            'definitions.demo.MyService', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('definitions.demo.MyService', rpc_method_handlers)
+
+
+ # This class is part of an EXPERIMENTAL API.
+class MyService(object):
+    """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def MyServiceApi(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/definitions.demo.MyService/MyServiceApi',
+            definitions_dot_demo__pb2.MyServiceRequest.SerializeToString,
+            definitions_dot_demo__pb2.MyServiceResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

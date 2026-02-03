@@ -17,4 +17,4 @@ def call_is_true(value: int) -> bool:
 
 
 if __name__ == "__main__":
-    print(call_is_true(-5))
+    print(call_is_true(5))
