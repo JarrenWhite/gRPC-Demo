@@ -19,7 +19,7 @@ class MyService(demo_pb2_grpc.MyServiceServicer):
         value_two = request.value_two
 
         return demo_pb2.MyServiceResponse(
-            sum = value_one + value_two
-            product = value_one * value_two
+            sum = value_one + value_two,
+            product = value_one * value_two,
             difference = value_one - value_two
         )
