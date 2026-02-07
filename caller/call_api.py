@@ -34,6 +34,23 @@ def call_my_service_api(value_one, value_two) -> Tuple[int, int, int]:
         return response.sum, response.product, response.difference
 
 
+def call_second_service_api(value_one, value_two) -> Tuple[int, int]:
+    channel_credentials = grpc.local_channel_credentials()
+
+    with grpc.secure_channel("localhost:50051", channel_credentials) as channel:
+        stub = demo_pb2_grpc.MyServiceStub(channel)
+
+        request = demo_pb2.MyServiceResponse(
+            sum = value_one,
+            product = value_two,
+            difference = 3
+        )
+
+        response = stub.SecondMyService(request)
+
+        return response.value_one, response.value_two
+
+
 if __name__ == "__main__":
     print(call_is_true(5))
 
@@ -41,3 +58,7 @@ if __name__ == "__main__":
     print(api_sum)
     print(api_product)
     print(api_difference)
+
+    val_one, val_two = call_second_service_api(1, 3)
+    print(val_one)
+    print(val_two)
