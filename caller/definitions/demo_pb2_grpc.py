@@ -111,12 +111,23 @@ class MyServiceStub(object):
                 request_serializer=definitions_dot_demo__pb2.MyServiceRequest.SerializeToString,
                 response_deserializer=definitions_dot_demo__pb2.MyServiceResponse.FromString,
                 _registered_method=True)
+        self.SecondMyService = channel.unary_unary(
+                '/definitions.demo.MyService/SecondMyService',
+                request_serializer=definitions_dot_demo__pb2.MyServiceResponse.SerializeToString,
+                response_deserializer=definitions_dot_demo__pb2.MyServiceRequest.FromString,
+                _registered_method=True)
 
 
 class MyServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def MyServiceApi(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SecondMyService(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -129,6 +140,11 @@ def add_MyServiceServicer_to_server(servicer, server):
                     servicer.MyServiceApi,
                     request_deserializer=definitions_dot_demo__pb2.MyServiceRequest.FromString,
                     response_serializer=definitions_dot_demo__pb2.MyServiceResponse.SerializeToString,
+            ),
+            'SecondMyService': grpc.unary_unary_rpc_method_handler(
+                    servicer.SecondMyService,
+                    request_deserializer=definitions_dot_demo__pb2.MyServiceResponse.FromString,
+                    response_serializer=definitions_dot_demo__pb2.MyServiceRequest.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -158,6 +174,33 @@ class MyService(object):
             '/definitions.demo.MyService/MyServiceApi',
             definitions_dot_demo__pb2.MyServiceRequest.SerializeToString,
             definitions_dot_demo__pb2.MyServiceResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SecondMyService(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/definitions.demo.MyService/SecondMyService',
+            definitions_dot_demo__pb2.MyServiceResponse.SerializeToString,
+            definitions_dot_demo__pb2.MyServiceRequest.FromString,
             options,
             channel_credentials,
             insecure,

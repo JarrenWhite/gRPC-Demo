@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x64\x65\x66initions/demo.proto\x12\x10\x64\x65\x66initions.demo\"\x1c\n\x0b\x44\x65moRequest\x12\r\n\x05value\x18\x01 \x01(\x05\"\x1f\n\x0c\x44\x65moResponse\x12\x0f\n\x07is_true\x18\x01 \x01(\x08\"8\n\x10MyServiceRequest\x12\x11\n\tvalue_one\x18\x01 \x01(\x05\x12\x11\n\tvalue_two\x18\x02 \x01(\x05\"E\n\x11MyServiceResponse\x12\x0b\n\x03sum\x18\x01 \x01(\x05\x12\x0f\n\x07product\x18\x02 \x01(\x05\x12\x12\n\ndifference\x18\x03 \x01(\x05\x32V\n\x0b\x44\x65moService\x12G\n\x06IsTrue\x12\x1d.definitions.demo.DemoRequest\x1a\x1e.definitions.demo.DemoResponse2d\n\tMyService\x12W\n\x0cMyServiceApi\x12\".definitions.demo.MyServiceRequest\x1a#.definitions.demo.MyServiceResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x64\x65\x66initions/demo.proto\x12\x10\x64\x65\x66initions.demo\"\x1c\n\x0b\x44\x65moRequest\x12\r\n\x05value\x18\x01 \x01(\x05\"\x1f\n\x0c\x44\x65moResponse\x12\x0f\n\x07is_true\x18\x01 \x01(\x08\"8\n\x10MyServiceRequest\x12\x11\n\tvalue_one\x18\x01 \x01(\x05\x12\x11\n\tvalue_two\x18\x02 \x01(\x05\"E\n\x11MyServiceResponse\x12\x0b\n\x03sum\x18\x01 \x01(\x05\x12\x0f\n\x07product\x18\x02 \x01(\x05\x12\x12\n\ndifference\x18\x03 \x01(\x05\x32V\n\x0b\x44\x65moService\x12G\n\x06IsTrue\x12\x1d.definitions.demo.DemoRequest\x1a\x1e.definitions.demo.DemoResponse2\xc0\x01\n\tMyService\x12W\n\x0cMyServiceApi\x12\".definitions.demo.MyServiceRequest\x1a#.definitions.demo.MyServiceResponse\x12Z\n\x0fSecondMyService\x12#.definitions.demo.MyServiceResponse\x1a\".definitions.demo.MyServiceRequestb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -41,6 +41,6 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_MYSERVICERESPONSE']._serialized_end=234
   _globals['_DEMOSERVICE']._serialized_start=236
   _globals['_DEMOSERVICE']._serialized_end=322
-  _globals['_MYSERVICE']._serialized_start=324
-  _globals['_MYSERVICE']._serialized_end=424
+  _globals['_MYSERVICE']._serialized_start=325
+  _globals['_MYSERVICE']._serialized_end=517
 # @@protoc_insertion_point(module_scope)

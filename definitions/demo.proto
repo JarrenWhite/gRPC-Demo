@@ -16,6 +16,7 @@ message DemoResponse {
 
 service MyService {
   rpc MyServiceApi (MyServiceRequest) returns (MyServiceResponse);
+  rpc SecondMyService (MyServiceResponse) returns (MyServiceRequest);
 }
 
 message MyServiceRequest {
