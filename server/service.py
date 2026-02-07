@@ -23,3 +23,13 @@ class MyService(demo_pb2_grpc.MyServiceServicer):
             product = value_one * value_two,
             difference = value_one - value_two
         )
+
+    def SecondMyService(self, request, context):
+        sum = request.sum
+        product = request.product
+        difference = request.difference
+
+        return demo_pb2.MyServiceRequest(
+            value_one = sum,
+            value_two = product + difference
+        )
